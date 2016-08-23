@@ -1,0 +1,135 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins/size.scss";
+
+.container {
+  display: inline-block;
+  position: relative;
+}
+
+.calendar {
+  @extend %cursor-border;
+  position: absolute;
+  right: 0;
+  bottom: 2.4em;
+  background-color: $white;
+  z-index: 2;
+  box-shadow: 0 .0625em .3125em rgba(0, 0, 0, .5);
+  table {
+    text-align: center;
+    @include size(20em, 13em);
+    border-collapse: separate;
+    border-spacing: 2px 2px;
+    user-select:none;
+    caption {
+      padding: .8em 1em;
+      font-size: 1em;
+      span {
+        &:hover {
+          color: $orange;
+        }
+        &:first-child {
+          float: left;
+          width: 0;
+          height: 0;
+          border-top: .45em solid transparent;
+          border-bottom: .45em solid transparent;
+          border-right: .9em solid black;
+          &:hover { border-right: .9em solid $orange; }
+        }
+        &:last-child {
+          float: right;
+          width: 0;
+          height: 0;
+          border-top: .45em solid transparent;
+          border-bottom: .45em solid transparent;
+          border-left: .9em solid black;
+          &:hover { border-left: .9em solid $orange; }
+        }
+      }
+    }
+    tr td {
+      &.dates:hover,
+      &.selected {
+        color: $white;
+        text-shadow: 0 -.0625em .0625em rgba(0,0,0,.5);
+        box-shadow: 0 0 0 1px $orange;
+        border-radius: .3em;
+        background: $orange linear-gradient(rgba(255, 255, 255, .2), transparent);
+      }
+    }
+  }
+}
+
+td.normal {
+
+}
+td.gray {
+  color: #ccc;
+}
+td.now {
+  color: #ee7419;
+  box-shadow: 0 0 0 1px $orange;
+  border-radius: .3em;
+  &:hover {
+    color: black;
+    background-color: $orange;
+  }
+}
+
+.inputBox {
+  @include size(11em, 2em);
+  @extend %cursor-border;
+  padding-left: 1em;
+}
+
+.mask {
+  @extend %mask;
+}
+
+@media screen and (max-width: $medium-page-max-width) {
+  .calendar {
+    right: -50%;
+    transform: translateX(20em / 2);
+  }
+}
+
+
+.calendar{
+  animation: fade-in ease $base-duration;
+}
+.calendarOut{
+  animation: fade-out ease $base-duration;
+}
+.maskOut{
+  animation: fade-out-mask ease $base-duration;
+}
+tbody.tbodyOut {
+  animation: fade-out ease $base-duration;
+}
+tbody.tbodyIn {
+  animation: fade-in ease $base-duration;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out-mask {
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 0;
+  }
+}

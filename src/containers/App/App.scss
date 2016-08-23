@@ -1,0 +1,25 @@
+@import "../../styles/variables.scss";
+
+
+.container:after{
+  content: "";
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: $gray-lighter;
+  z-index: $background-z-index;
+}
+.main {
+  width: 75%;
+  margin: 5.5em auto 3em;
+  padding: 1em 0 2.5em;
+  border-radius: .2em;
+  box-shadow: 0 .05em .25em rgba(0, 0, 0, .5);
+  font-size: $font-size-base;
+  background: $white;
+  @media screen and (max-width: 480px) {
+    padding: .5em 0 2em;
+  }
+}

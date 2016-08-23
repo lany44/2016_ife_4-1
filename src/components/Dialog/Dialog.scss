@@ -1,0 +1,81 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins/size.scss";
+@import "../../styles/mixins/iconfont.scss";
+
+
+.hide-dialog {
+  animation: fade-out $base-duration ease;
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  },
+  100% {
+    opacity: 0;
+  }
+}
+.hide-mask {
+  animation: mask-fade-out $base-duration ease;
+}
+@keyframes mask-fade-out {
+  0% {
+    opacity: .5;
+  },
+  100% {
+    opacity: 0;
+  }
+}
+
+.dialog {
+  @include size(25em, 15em);
+  font-size: $font-size-base;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -85%);
+  border: 1px solid $gray;
+  border-radius: .4em;
+  box-shadow: 0 0 10px $gray-dark;
+  overflow: hidden;
+  z-index: 2;
+  background-color: $white;
+  .header {
+    @extend %flex-space-between;
+    padding: 0 .7em;
+    height: 2em;
+    background-color: $gray-light;
+    span.close {
+      &:hover {
+        color: $orange;
+        cursor: pointer;
+      }
+      &::before {
+        @include iconfont($remove-option, 1em, 0, 0);
+      }
+    }
+  }
+  .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 .7em;
+    height: calc(100% - 6em);
+  }
+  .footer {
+    height: 4em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .btn {
+      @extend %button;
+      @include size(4.5em, 1.725em);
+      line-height: 1.725em;
+      font-size: .9em;
+      margin: 0 1em;
+    }
+  }
+}
+
+.mask {
+  @extend %mask;
+}

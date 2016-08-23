@@ -1,0 +1,15 @@
+@import "../../styles/variables";
+
+.table-th {
+  height: 3em;
+  @extend %hover-red;
+}
+
+.table-tbody-tr {
+  @extend %hover-red;
+  height: 2.5em;
+  border-bottom: 1px solid $gray-light;
+  .table-td {
+    font-size: 80%;
+  }
+}

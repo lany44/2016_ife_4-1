@@ -1,0 +1,28 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins/size.scss";
+
+.wrap {
+  @extend %flex-center;
+  margin: 6em auto 4.5em;
+}
+
+.table {
+  width: 95%;
+  margin: 0 auto;
+  .on-release {
+    color: $green;
+  }
+  .over-release {
+    color: $red;
+  }
+}
+
+.dialog{
+  display: inline;
+}
+.button {
+  @extend %button;
+  @include size(5, 1.75);
+  font-size: .8em;
+  margin: 0 1em;
+}

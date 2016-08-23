@@ -1,0 +1,152 @@
+@import "../../styles/variables.scss";
+@import "../../styles/mixins/size.scss";
+@import "../../styles/mixins/iconfont.scss";
+
+.container {
+  width: 90%;
+  margin: 1.875em auto;
+  font-size: 80%;
+  .button {
+    @extend %button;
+    .SC-btn-icon::before {
+      @include iconfont($SC, .9em, -1em, .5em);
+    }
+    .MC-btn-icon::before {
+      @include iconfont($MC, .9em, -1em, .5em);
+    }
+    .TX-btn-icon::before {
+      @include iconfont($TX, .9em, -1em, .5em);
+    }
+  }
+  .line {
+    width: 100%;
+    border-top: 2px solid #ccc;
+  }
+}
+
+.header {
+  @include size(100%, 3.75em);
+  @extend %flex-center;
+  @extend %hover-red;
+  line-height: 3.75em;
+  margin-bottom: 1.25em;
+  .title {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    font-size: $h1-base;
+  }
+}
+
+.list {
+  min-height: 10em;
+  margin: 0.75em;
+  .question {
+    @extend %hover-red;
+    padding: 0.75em;
+    &:hover > .question-caption {
+      font-weight: bold;
+    }
+    .question-caption{
+      width: 100%;
+      .question-content {
+        display: inline-block;
+        margin-left: 1em;
+        width: calc(100% - 3em);
+      }
+    }
+    .options {
+      margin: 1em 0 0 1.25em;
+      .option {
+        margin: .5em 0;
+        .option-content {
+          display: inline-block;
+        }
+        input.option-content {
+          width: calc(100% - 5em);
+        }
+        .SC-option-icon::before {
+          @include iconfont($SC-option, 1em, 1em, .5em);
+
+        }
+        .MC-option-icon::before {
+          @include iconfont($MC-option, 1em, 1em, .5em);
+
+        }
+        &:hover .remove-option-icon::before {
+          @include iconfont($remove-option, 1em, 1em, .5em);
+          color: red;
+        }
+      }
+      .add-option {
+        width: 100%;
+        text-align: center;
+      }
+      .TX-textarea {
+        width: 100%;
+        height: 5em;
+        margin-bottom: .25em;
+      }
+      .TX-disRequiered-icon::before {
+        @include iconfont($MC-option, 1em, -.5em, .5em);
+      }
+      .TX-isRequiered-icon::before {
+        @include iconfont($MC, 1em, -.5em, .5em);
+      }
+    }
+    .operations-wrap,
+    .add-option{
+      visibility: hidden;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+    &:hover > .operations-wrap {
+      visibility: visible;
+      display: flex;
+      justify-content: flex-end;
+      width: 100%;
+      .operation {
+        margin: 0 .25em;
+        &:hover {
+          font-weight: bold;
+        }
+        &:last-child {
+          color: red;
+        }
+      }
+    }
+    &:hover .add-option {
+      visibility: visible;
+      outline: 1px $gray dashed;
+      &:hover {
+        font-weight: bold;
+        outline: 1px black dashed;
+      }
+    }
+  }
+}
+
+.addQuestions {
+  @extend %flex-space-between;
+  flex-wrap: wrap;
+  padding: 0 10em;
+  margin: 1em auto;
+  >h2 {
+    width: 100%;
+    height: 2.5em;
+    font-size: $h2-base;
+    order: 0;
+    text-align: center;
+  }
+}
+
+.footer {
+  @extend %flex-space-between;
+  padding: 0 5em;
+  margin-top: 2em;
+  div.buttons {
+    @extend %flex-space-between;
+    width: 30%;
+  }
+}

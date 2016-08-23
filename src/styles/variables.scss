@@ -1,0 +1,107 @@
+$font-size-base:          20px !default;
+$h1-base:                 25px !default;
+$h2-base:                 20px !default;
+
+$small-page-max-width:    480px !default;
+$medium-page-max-width:   960px !default;
+
+$gray-base:               #000 !default;
+$gray-darker:             lighten($gray-base, 13.5%) !default; // #222
+$gray-dark:               lighten($gray-base, 33.5%) !default; // #555
+$gray:                    lighten($gray-base, 53.3%) !default; // #888
+$gray-light:              lighten($gray-base, 80%)   !default; // #ccc
+$gray-lighter:            lighten($gray-base, 93.3%) !default; // #eee
+
+$orange:                  #ee7419 !default;
+$white:                   #fff    !default;
+$green:                   rgb(43, 214, 117) !default;
+$red:                     rgb(255, 61, 0) !default;
+$hover-red:               rgb(255, 212, 172) !default;
+
+$add:                     "\e601" !default;
+$SC:                      "\e606" !default;
+$MC:                      "\e604" !default;
+$TX:                      "\e600" !default;
+$SC-option:               "\e605" !default;
+$MC-option:               "\e602" !default;
+$remove-option:           "\e603" !default;
+
+$background-z-index:      -1 !default;
+
+$base-duration:           .5s !default;
+$calendar-zoom-times:     10  !default;
+
+@font-face {
+  font-family: 'iconfont';
+  src: url('//at.alicdn.com/t/font_1471916271_2506428.eot'); /* IE9*/
+  src: url('//at.alicdn.com/t/font_1471916271_2506428.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('//at.alicdn.com/t/font_1471916271_2506428.woff') format('woff'), /* chrome、firefox */
+  url('//at.alicdn.com/t/font_1471916271_2506428.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+  url('//at.alicdn.com/t/font_1471916271_2506428.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+
+%mask {
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: $gray-dark;
+  z-index: 1;
+  opacity: .5;
+  animation: mask $base-duration ease;
+}
+@keyframes mask {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: .5;
+  }
+}
+
+
+%cursor-border {
+  border: 1px solid $gray;
+  border-radius: .2em;
+  cursor: pointer;
+}
+%button {
+  @extend %cursor-border;
+  display: inline-block;
+  width: 6em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  background-color: $gray-light;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -o-user-select:none;
+  user-select:none;
+  color: black;
+  &:hover {
+    background: $orange linear-gradient(rgba(255, 255, 255, .2), transparent);
+    color: $white;
+    text-shadow: 0 -.0625em .0625em rgba(0,0,0,.5);
+    border: 1px solid $orange;
+    box-shadow: 0 0 0 1px $orange;
+  }
+}
+
+%flex-space-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+%flex-center{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%hover-red {
+  &:hover {
+    background-color: $hover-red;
+  }
+}
